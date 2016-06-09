@@ -1,0 +1,41 @@
+<!-- Modal Login -->
+<div class="modal animated" id="loginModal" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content loginModal">
+            <div class="modal-header">
+                <h4 class="modal-title" ng-if="usuario == ''">Por favor ingresa tus datos</h4>
+                <h4 class="modal-title" ng-if="usuario != ''">Hola {{usuario}}</h4>
+                <button type="button" class="close" ng-click="cierraLogin()"><span aria-hidden="true">&times;</span></button>
+                <button type="button btn-sm" class="logOut" ng-if="usuario != ''" ng-click="signOut()"><span class="glyphicon glyphicon-off"></span></button>
+            </div>
+            <div class="modal-body" id="gameContent">
+                <form ng-show="usuario == ''" class="form-signin" name="loginForm" ng-model="$parent.loginForm">
+                    <!-- <label for="inputName" class="sr-only">Nombre de usuario</label>
+                        <input type="text" id="inputName" class="form-control" placeholder="Nombre de usuario" required="" autofocus="" ng-model="nombreUsuario"> -->
+                    <label for="inputName" class="sr-only">Nombre de usuario</label>
+                    <input type="text" id="inputName" class="form-control" placeholder="Nombre de usuario" required="" ng-model="nombreDeUsuario">
+                    <label for="inputEmail" class="sr-only">Dirección de E-mail</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Dirección de E-mail" required="" ng-model="email">
+                    <label for="inputPassword" class="sr-only">Contraseña</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="" ng-model="password">
+                    <label for="inputPasswordCheck" class="sr-only" ng-if="conCuenta != true">Confirmar contraseña</label>
+                    <input ng-if="!conCuenta" type="password" id="inputPasswordCheck" class="form-control" placeholder="Confirmar contraseña" required="" ng-model="$parent.passwordCheck" oninvalid="this.setCustomValidity('La contraseña no coincide')" ng-change="checkPass()">
+                    <hr>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="crearUsuario()" ng-if="conCuenta != true">Crear usuario</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="iniciarSesion()" ng-if="conCuenta == true">Iniciar sesión</button>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="con-cuenta" ng-model="conCuenta"> Ya tengo una cuenta
+                        </label>
+                    </div>
+                </form>
+                <div ng-if="usuario != ''">Contenido</div>
+            </div>
+            <div class="modal-footer">
+                <div ng-if="loadingOnModal == true" class="cssload-container loaderModal">
+                    <div class="cssload-speeding-wheel"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

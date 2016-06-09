@@ -1,0 +1,18 @@
+<div class="jumbotron">
+    <div id="castle" class="castle">
+        <div></div>
+    </div>
+    <div class="iconPanel">
+        <div class="col-md-12">
+            <img id="logo" src="images/drSimiLogo.png" alt="Castillo">
+        </div>
+        <button class="btn btn-info btn-lg" id="btnEdicionesModal">
+            <span class="glyphicon" ng-class="{ 'glyphicon-eye-open': panelAbierto == false, 'glyphicon-eye-close': panelAbierto == true }"></span>
+            <span ng-if="panelAbierto == true">OCULTAR</span>
+            <span ng-if="panelAbierto == false">MOSTRAR</span>
+        </button>
+        <button class="btn btn-info btn-lg" id="btnJuegoModal" data-toggle="tooltip" title="¿ Quieres viajar al espacio ?">
+            <span class="glyphicon glyphicon-new-window"></span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+{"ejemplares" : [	
+		{
+			"titulo" : "Mundo Simi 1",
+			"subtitulo": "El primer ejemplar de Mundo Simi, seguro te divertirás, échale un ojo.",
+			"img" : "mundo-simi-01"
+		},
+		{
+			"titulo" : "Mundo Simi 2",
+			"subtitulo": "En el segundo número de Mundo Simi tenemos para ti todo tipo de actividades y datos curiosos, entra y diviértete aprendiendo.",
+			"img" : "mundo-simi-02"
+		},
+		{
+			"titulo" : "Mundo Simi 3",
+			"subtitulo": "Este es nuetro tercer número, Mundo Simi es lo mismo pero más divertido.",
+			"img" : "mundo-simi-03"
+		}	
+	]
+}

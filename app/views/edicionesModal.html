@@ -1,0 +1,28 @@
+<!-- Modal Ediciones Mundo Simi -->
+<div class="modal animated" id="ediciones" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Mundo Simi - Ediciones</h4>
+                <button type="button" class="close" ng-click="cierraEdiciones()"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="panelC">
+                    <div class="row stylish-panel">
+                        <div class="col-md-12 animated" dir-paginate="ejemplar in ejemplares | itemsPerPage: 1">
+                            <div>
+                                <img ng-src="images/mundo-simi/{{ejemplar.img}}.jpg" alt="{{ejemplar.titulo}}" class="img-circle img-thumbnail" width="209" height="209">
+                                <h2>{{ejemplar.titulo}}</h2>
+                                <p>{{ejemplar.subtitulo}}</p>
+                                <button type="button" class="btn btn-primary" title="Ver contenido del ejemplar">Ver ejemplar »</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <dir-pagination-controls class="col-md-12" max-size="5" boundary-links="false"></dir-pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

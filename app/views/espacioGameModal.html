@@ -1,0 +1,43 @@
+<!-- Modal Juego Mundo Simi -->
+<div class="modal animated" id="juegoMundoSimi" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content gameDialog">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Odisea espacial</h4>
+                <button type="button" class="close" ng-click="cierraJuegoMundoSimi()"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="gameContent"></div>
+                <div id="guardaPrompt" class="animated bounceInUp" ng-if="guardaPrompt == true">
+                    <p ng-if="usuario == ''">Regístrate o ingresa con tu cuenta para guardar tu puntuación</p>
+                    <div ng-if="usuario != ''">
+                        <p>¿Quieres guardar tu puntuación?</p>
+                        <button class="btn btn-info btn-lg" ng-click="siGuarda()">Sí</button>
+                        <button class="btn btn-info btn-lg" ng-click="noGuardes()">No</button>
+                    </div>
+                </div>
+                <div ng-if="scoreGuardado == true">
+                    <p>Puntuación guardada: {{usuario}} - {{score}} pts.</p>
+                    <button class="btn btn-info btn-lg" ng-click="getScores()">Ver puntuaciones más altas</button>
+                </div>
+                <div id="highScoresSpaceGame" ng-if="marcadores == true">
+                    <h4>Ranking</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">Pts.</span>
+                            USUARIO
+                        </li>
+                        <li class="list-group-item" >
+                            <span class="badge">14</span>
+                            Cras justo odio
+                        </li>
+                    </ul>                    
+                </div>                
+            </div>
+            <hr>
+            <div class="cssload-container loaderGame" ng-if="loadingGame == true">
+                <div class="cssload-speeding-wheel"></div>
+            </div>            
+        </div>
+    </div>
+</div>

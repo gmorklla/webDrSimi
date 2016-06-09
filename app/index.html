@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/cover.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/perspectiveRules.css">
+    <link rel="stylesheet" href="styles/animate.css">
+    <!-- endbuild -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+</head>
+
+<body ng-app="drsimiApp">
+    <div id="loading" class="loading">
+        <p><img class="simi" src="images/drSimiLogo.png" alt=""></p>
+        <div class="cssload-container">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
+    </div>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    <div class="clouds"></div>
+    <div id="demo1"></div>
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <div class="site-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div class="masthead clearfix">
+                    <div class="inner">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="NavCtrl">
+                                    <ul class="nav navbar-nav masthead-nav">
+                                        <li class="btn" data-toggle="tooltip" title="¿ Qué tal si aprendemos algo de ciencia ?"><a ng-click="goTo('ciencia')">Ciencia</a></li>
+                                        <li class="btn" data-toggle="tooltip" title="¿ Quieres visitar el Mundo del Dr Simi ?"><a ui-sref="inicio">Mundo Simi</a></li>
+                                        <li class="btn" data-toggle="tooltip" title="La cultura también puede ser divertida"><a href="#/cultura">Cultura</a></li>
+                                        <li class="btn" data-toggle="tooltip" title="La Historia nos aleja de los errores del pasado"><a href="#/historia">Historia</a></li>
+                                        <li id="dropdown" class="btn">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Más <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Wallpapers</a></li>
+                                                <li><a href="#">Postales</a></li>
+                                                <li><a href="#">Zoocial</a></li>
+                                                <li><a href="#">Juegos</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="#">Contacto</a></li>
+                                                <li role="separator" class="divider"></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-info btn-lg loginBtn" ng-click="loginOpenModal()" data-toggle="tooltip" title="¿ Quieres ingresar ?" ng-if="usuario == ''">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                    </button>
+                                    <button class="btn btn-info btn-sm loginBtn" ng-click="loginOpenModal()" ng-if="usuario != ''">
+                                        <span class="glyphicon glyphicon-user"></span> {{usuario}}                                        
+                                    </button>
+                                </div>
+                                <!-- /.navbar-collapse -->
+                            </div>
+                            <!-- /.container-fluid -->
+                        </nav>
+                    </div>
+                </div>
+                <div class="inner cover" ui-view></div>
+                <div class="mastfoot">
+                    <div class="inner">
+                        <p><a href="http://getbootstrap.com">Aviso de Privacidad</a> | <a href="https://twitter.com/mdo">Aviso Legal</a>
+                            <br>Copyright 2016 Dr. Simi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cModalEdiciones"></div>
+    <div id="cModalSpaceGame"></div>
+    <div id="cModalLogin"></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/inicio.js"></script>
+    <script src="scripts/controllers/ciencia.js"></script>
+    <script src="scripts/controllers/nav.js"></script>
+    <script src="scripts/services/loadData.js"></script>
+    <script src="scripts/services/auth.js"></script>
+    <script src="scripts/services/compile.js"></script>
+    <!-- endbuild -->
+    <!-- Jquery parallax effect -->
+    <script type="text/javascript" src="scripts/plugins/jquery.logosDistort.js"></script>
+    <!-- Jquery particle effect -->
+    <script type="text/javascript" src="scripts/plugins/jquery.particleground.min.js"></script>
+    <!-- Greensock TweenLite -->
+    <script type="text/javascript" src="scripts/plugins/TweenLite.min.js"></script>
+    <script type="text/javascript" src="scripts/plugins/easing/EasePack.min.js"></script>
+    <script type="text/javascript" src="scripts/plugins/CSSPlugin.min.js"></script>
+    <!-- Main.js con efectos de fondo y de nav -->
+    <script src="scripts/jquery/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.0/angularfire.min.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAa57vtuKGpPwMKCkmB9XQsMR9LdTb1_Bo",
+        authDomain: "webdrsimi.firebaseapp.com",
+        databaseURL: "https://webdrsimi.firebaseio.com",
+        storageBucket: "",
+    };
+    firebase.initializeApp(config);
+    </script>
+</body>
+
+</html>
