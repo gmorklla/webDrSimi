@@ -114,10 +114,9 @@ angular.module('drsimiApp')
             if (user) {
                 // El usuario está logeado, carga sus 5 resultados y compara, sólo se graban los más altos puntajes
                 firebase.database().ref('juegos/space/' + user.uid).on('value', function(snapshot) {
-                    var obj = snapshot.val();
-                    var cantidad = _.size(obj);
-                    var scoresObj = _.values(obj);
-                    console.log(scoresObj[0]);
+                    snapshot.forEach(function(childSnapshot) {
+                        console.log(childSnapshot);
+                    });
                 });
 
                 /*firebase.database().ref('juegos/space/' + user.uid).push({
