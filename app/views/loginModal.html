@@ -12,13 +12,13 @@
                 <form ng-show="usuario == ''" class="form-signin" name="loginForm" ng-model="$parent.loginForm">
                     <!-- <label for="inputName" class="sr-only">Nombre de usuario</label>
                         <input type="text" id="inputName" class="form-control" placeholder="Nombre de usuario" required="" autofocus="" ng-model="nombreUsuario"> -->
-                    <label for="inputName" class="sr-only">Nombre de usuario</label>
-                    <input type="text" id="inputName" class="form-control" placeholder="Nombre de usuario" required="" ng-model="nombreDeUsuario">
+                    <label for="inputName" class="sr-only" ng-if="!conCuenta">Nombre de usuario</label>
+                    <input type="text" id="inputName" class="form-control" placeholder="Nombre de usuario" required="" ng-model="$parent.nombreDeUsuario" ng-if="!conCuenta">
                     <label for="inputEmail" class="sr-only">Dirección de E-mail</label>
                     <input type="email" id="inputEmail" class="form-control" placeholder="Dirección de E-mail" required="" ng-model="email">
                     <label for="inputPassword" class="sr-only">Contraseña</label>
                     <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="" ng-model="password">
-                    <label for="inputPasswordCheck" class="sr-only" ng-if="conCuenta != true">Confirmar contraseña</label>
+                    <label for="inputPasswordCheck" class="sr-only" ng-if="!conCuenta">Confirmar contraseña</label>
                     <input ng-if="!conCuenta" type="password" id="inputPasswordCheck" class="form-control" placeholder="Confirmar contraseña" required="" ng-model="$parent.passwordCheck" oninvalid="this.setCustomValidity('La contraseña no coincide')" ng-change="checkPass()">
                     <hr>
                     <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="crearUsuario()" ng-if="conCuenta != true">Crear usuario</button>
@@ -34,6 +34,17 @@
             <div class="modal-footer">
                 <div ng-if="loadingOnModal == true" class="cssload-container loaderModal">
                     <div class="cssload-speeding-wheel"></div>
+                </div>
+                <div class="alert alert-dange" ng-if="error">
+                    <div class="row">
+                        <span class="col-md-2 glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <p class="bg-error text-center col-md-10">                            
+                            <span class="sr-only">Error:</span>
+                            {{error}}
+                        </p>                        
+                    </div>
+                              
+                    <!-- <p class="bg-error text-center"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> {{error}}</p> -->
                 </div>
             </div>
         </div>

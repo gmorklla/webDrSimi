@@ -682,6 +682,37 @@ button.logOut:hover {
   margin-top: 5px;
 }
 
+.alert {
+  padding: 0;
+}
+
+.alert .row .glyphicon {
+  font-size: 2em;
+}
+
+.bg-error {
+  background-color: darkseagreen !important;
+  border-radius: 10px !important;
+  width: 70%;
+  margin: 0 auto;
+  padding: 5px;
+  color: white;
+}
+
+.list-group-item > .badge {
+  font-size: 1em;
+  background-color: darkslateblue;
+  width: 100px;
+}
+
+#highScoresSpaceGame button {
+  border:4px solid #fff;
+}
+
+#highScoresSpaceGame button:hover {
+  color:#fff;
+}
+
 
 /* Responsive: Portrait tablets and up */
 
