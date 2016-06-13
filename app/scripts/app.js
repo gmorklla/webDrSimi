@@ -21,22 +21,50 @@ angular
         'angularUtils.directives.dirPagination',
         'firebase'
     ])
-    .config(function($routeProvider, $stateProvider, $urlRouterProvider) {
+    .config(['$routeProvider', '$stateProvider', '$urlRouterProvider', function($routeProvider, $stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('inicio', {
                 url: "/",
-                templateUrl: "views/inicio.html",
-                controller: 'InicioCtrl',
-                controllerAs: 'inicio'
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'main': {
+                        templateUrl: "views/inicio.html",
+                        controller: 'InicioCtrl',
+                        controllerAs: 'inicio'
+                    },
+                    'avisos': {
+                        templateUrl: "views/avisos.html",
+                        controller: 'AvisosCtrl',
+                        controllerAs: 'avisos'
+                    }
+                }
             })
             .state('ciencia', {
                 url: "/ciencia",
-                templateUrl: "views/ciencia.html",
-                controller: 'CienciaCtrl',
-                controllerAs: 'ciencia'
+                'views': {
+                    'nav': {
+                        templateUrl: 'views/nav.html',
+                        controller: 'NavCtrl',
+                        controllerAs: 'nav'
+                    },
+                    'main': {
+                        templateUrl: "views/ciencia.html",
+                        controller: 'CienciaCtrl',
+                        controllerAs: 'ciencia'
+                    },
+                    'avisos': {
+                        templateUrl: "views/avisos.html",
+                        controller: 'AvisosCtrl',
+                        controllerAs: 'avisos'
+                    }
+                }
             });
         $urlRouterProvider.otherwise("/");
-    })
+    }])
     .run(function($rootScope) {
         // Pantalla completa para el loader principal
         var w = window.innerWidth;
@@ -116,10 +144,6 @@ angular
                 };                
                 $('#demo1').logosDistort(options);
             }
-
-            $('#btnJuegoModal').click(function(event) {
-                console.log('click!');
-            });
 
         });
 

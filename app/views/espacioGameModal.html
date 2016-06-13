@@ -18,7 +18,7 @@
                 </div>
                 <div ng-if="scoreGuardado == true">
                     <p ng-if="noValeLaPena != true">Puntuación guardada: {{usuario}} - {{score}} pts.</p>
-                    <p ng-if="noValeLaPena == true">Tu puntaje no es mayor que los anteriores.</p>
+                    <p ng-if="noValeLaPena == true">Tu puntaje no es mayor que el guardado.</p>
                     <button class="btn btn-info btn-lg" ng-click="getScores()">Ver puntuaciones más altas</button>
                 </div>
                 <div id="highScoresSpaceGame" ng-if="marcadores == true">
@@ -28,13 +28,14 @@
                             <span class="badge">Pts.</span>
                             USUARIO
                         </li>
-                        <li class="list-group-item" ng-repeat="score in playerScores">
-                            <span class="badge">{{score}}</span>
-                            {{usuario}}
+                        <li class="list-group-item" dir-paginate="score in allScores | orderBy:'score':true | itemsPerPage: 10">
+                            <span class="badge">{{score.score}}</span>
+                            {{score.nombre}}
                         </li>
                     </ul>
-                    <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="cerrarRanking()">
-                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span> Cerrar
+                    <dir-pagination-controls class="col-md-12" max-size="5" boundary-links="false"></dir-pagination-controls>
+                    <button type="button" class="btn btn-default cerrarRanking" aria-label="Left Align" ng-click="cerrarRanking()">
+                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
                     </button>                    
                 </div>                
             </div>

@@ -233,11 +233,11 @@ a:visited {
 .clouds {
     background: transparent url(../images/clouds3.png) repeat top center;
     z-index: 3;
-    -moz-animation: move-clouds-back 200s linear infinite;
-    -ms-animation: move-clouds-back 200s linear infinite;
-    -o-animation: move-clouds-back 200s linear infinite;
-    -webkit-animation: move-clouds-back 200s linear infinite;
-    animation: move-clouds-back 200s linear infinite;
+/*     -moz-animation: move-clouds-back 200s linear infinite;
+-ms-animation: move-clouds-back 200s linear infinite;
+-o-animation: move-clouds-back 200s linear infinite;
+-webkit-animation: move-clouds-back 200s linear infinite;
+animation: move-clouds-back 200s linear infinite; */
 }
 
 
@@ -575,6 +575,34 @@ button.logOut:hover {
   }
 }
 
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
 .modal-footer .pagination {
   width: 100%;
   margin:0;
@@ -595,6 +623,12 @@ button.logOut:hover {
   opacity: 0;
 }
 
+.avisos.ng-enter-active {
+  opacity: 1;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
 /* Juego Modal */
 
 .gameDialog {
@@ -612,28 +646,46 @@ button.logOut:hover {
   left: 0;
 }
 
-#highScoresSpaceGame ul {
+#highScoresSpaceGame .list-group {
   width: 80%;
   margin:5px auto;
 }
 
 #highScoresSpaceGame ul li:first-child {
-  background-color: darkslateblue;
+  background-color: mediumvioletred;
   border-top: 4px dotted #fff;
   border-bottom: 4px dotted #fff;
 }
 
 #highScoresSpaceGame ul li {
-  background-color: darkorchid;
+  background-color: inherit;
   border-radius: 0;
   border: none;
-  border-bottom: 1px dotted #fff;
+  border-bottom: 2px dotted #fff;
   text-align: left;
 }
 
 .loaderGame {
   top: 50%;
   transform: translateY(-50%);
+}
+
+.cerrarRanking {
+  background: crimson;
+  background-image: -webkit-linear-gradient(top, crimson, #E63131);
+  background-image: -moz-linear-gradient(top, crimson, #E63131);
+  background-image: -ms-linear-gradient(top, crimson, #E63131);
+  background-image: -o-linear-gradient(top, crimson, #E63131);
+  background-image: linear-gradient(to bottom, crimson, #E63131);
+  padding: 5px 5px 0;
+}
+
+.cerrarRanking:hover {
+  background: crimson;
+}
+
+.pagination {
+  margin: 5px 0;
 }
 
 /* Login Modal */
@@ -711,6 +763,20 @@ button.logOut:hover {
 
 #highScoresSpaceGame button:hover {
   color:#fff;
+}
+
+.avisos {
+  width: 100%;
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+}
+
+.bg-avisos {
+  width: 50%;
+  background-color: #FF5A00;
+  border-radius: 10px;
+  margin: 0 auto 5px;
 }
 
 
