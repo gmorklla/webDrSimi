@@ -118,15 +118,23 @@ angular.module('drsimiApp')
         };
 
         $scope.deleteUser = function() {
-            $scope.message = null;
-            $scope.error = null;
 
             // Delete the currently signed-in user
-            $scope.$deleteUser().then(function() {
-                $scope.message = "User deleted";
-            }).catch(function(error) {
-                $scope.error = error;
-            });
+            var r = confirm("¿En verdad quieres eliminar tu cuenta?");
+            if (r == true) {
+                var usuarioActual = firebase.auth().currentUser;
+                var borra = FirebaseRTData.deleteUser(usuarioActual);
+                borra.then(function(){
+                    console.log('Borrado');
+                    $rootScope.usuario = '';
+                    digiere();
+                }, function(error) {
+                    // An error happened.
+                    console.log(error);
+                });
+            } else {
+                console.log("You pressed Cancel!");
+            }
         };
 
         var usuarioLogInOrOut = FirebaseRTData.checkLogInUser(function(user) {
@@ -157,6 +165,10 @@ angular.module('drsimiApp')
                 $rootScope.loadingOnModal = false;
                 $rootScope.usuario = user.displayName;
                 digiere();
+                var refUser = FirebaseRTData.ref('usuarios/' + user.displayName);
+                refUser.set({
+                    uid: user.uid
+                });
             }, function(error) {
                 // An error happened.
                 console.log(error);

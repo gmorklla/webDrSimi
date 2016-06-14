@@ -3,6 +3,9 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content loginModal">
             <div class="modal-header">
+                <button type="button" class="btn btn-default cerrarRanking eliminarUsuario" ng-click="deleteUser()" data-toggle="tooltip" title="Eliminar cuenta" ng-if="usuario != ''">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>                 
                 <h4 class="modal-title" ng-if="usuario == ''">Por favor ingresa tus datos</h4>
                 <h4 class="modal-title" ng-if="usuario != ''">Hola {{usuario}}</h4>
                 <button type="button" class="close" ng-click="cierraLogin()"><span aria-hidden="true">&times;</span></button>

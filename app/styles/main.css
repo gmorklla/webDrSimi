@@ -680,8 +680,16 @@ button.logOut:hover {
   padding: 5px 5px 0;
 }
 
-.cerrarRanking:hover {
+.cerrarRanking:hover, .cerrarRanking:focus {
   background: crimson;
+  border: solid #f0f0f0 4px;
+  color:white;
+}
+
+.eliminarUsuario {
+  position: absolute;
+  top: 5%;
+  right: 5%; 
 }
 
 .pagination {
@@ -777,6 +785,19 @@ button.logOut:hover {
   background-color: #FF5A00;
   border-radius: 10px;
   margin: 0 auto 5px;
+}
+
+.text-muted {
+  text-shadow: none;
+  color: wheat;
+  font-size: 0.65em;
+  font-family: arial;
+}
+
+.text-muted a {
+  text-decoration: underline;
+  cursor: pointer;
+  color: wheat;
 }
 
 

@@ -23,6 +23,9 @@ angular.module('drsimiApp')
             createUser: function (email, password) {
             	return firebase.auth().createUserWithEmailAndPassword(email, password);
             },
+            deleteUser: function (user) {
+                return user.delete();
+            },
             ref: function (path) {
             	return firebase.database().ref(path);
             }

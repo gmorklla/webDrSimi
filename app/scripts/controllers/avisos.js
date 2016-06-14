@@ -16,22 +16,24 @@ angular.module('drsimiApp')
 			var score = childSnapshot.val();
 			var aviso = '¡' + quien + ' acaba de hacer ' + score + ' pts. en la Odisea espacial!';
 			putAlert(aviso);
-/*            setTimeout(function() {
-                $scope.aviso = null;
-                $('.avisos').addClass('fadeOutUp');
-                setTimeout(function() {
-                	digiere();
-                }, 1000);
-            }, 4000);*/
 		});
 
 		$scope.avisosArray = [];
 
 		function putAlert(aviso) {
 			$scope.avisosArray.push(aviso);
-			console.log($scope.avisosArray);
-			// $('.avisos').removeClass('fadeOutUp');
+			var indice = $scope.avisosArray.length - 1;
+			pullAlert(indice);
 			digiere();			
+		}
+
+		function pullAlert(indice) {
+			var stringToSearch = $scope.avisosArray[indice];
+			var selector = "p:contains('" + stringToSearch + "')";			
+			setTimeout(function () {
+				$( selector ).removeClass('fadeInUp').addClass('fadeOutUp');
+			}, 3000);
+			$scope.avisosArray = $scope.avisosArray.splice(indice, 1);
 		}
 
         // Procesa datos que angular todavía no ha digerido
