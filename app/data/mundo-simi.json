@@ -2,17 +2,50 @@
 		{
 			"titulo" : "Mundo Simi 1",
 			"subtitulo": "El primer ejemplar de Mundo Simi, seguro te divertirás, échale un ojo.",
-			"img" : "mundo-simi-01"
+			"img" : "mundo-simi-01",
+			"url": "http://gruporeforma.uberflip.com/i/147593-simi-revista-julio"
 		},
 		{
 			"titulo" : "Mundo Simi 2",
 			"subtitulo": "En el segundo número de Mundo Simi tenemos para ti todo tipo de actividades y datos curiosos, entra y diviértete aprendiendo.",
-			"img" : "mundo-simi-02"
+			"img" : "mundo-simi-02",
+			"url": "http://gruporeforma.uberflip.com/i/214782-mundo-simi-noviembre"
 		},
 		{
 			"titulo" : "Mundo Simi 3",
 			"subtitulo": "Este es nuetro tercer número, Mundo Simi es lo mismo pero más divertido.",
-			"img" : "mundo-simi-03"
-		}	
+			"img" : "mundo-simi-03",
+			"url": "http://www.doctorsimi.com.mx/flip/MundoSimi4/index.html"
+		},
+		{
+			"titulo" : "Mundo Simi 4",
+			"subtitulo": "En este número de Mundo Simi: Tripas de gato, conoce al más tirano de los saurios y más.",
+			"img" : "mundo-simi-04",
+			"url": "http://www.doctorsimi.com.mx/flip/MundoSimi4/index.html"
+		},
+		{
+			"titulo" : "Mundo Simi 5",
+			"subtitulo": "No te pierdas los tips de Paulina. Además queremos preguntarte algo importante, tú ¿reduces, reutilizas o reciclas?",
+			"img" : "mundo-simi-05",
+			"url": "http://www.doctorsimi.com.mx/flip/MundoSimi5/index.html"
+		},
+		{
+			"titulo" : "Mundo Simi 6",
+			"subtitulo": "Porque sabemos que te gustan las historias de mar, te enseñamos a armar tu propio barco pirata.",
+			"img" : "mundo-simi-06",
+			"url": "http://www.doctorsimi.com.mx/flip/MundoSimi6/index.html"
+		},
+		{
+			"titulo" : "Mundo Simi 7",
+			"subtitulo": "¿Y a ti te laten los videojuegos? y no olvides seguir las aventuras del Dr. Simi.",
+			"img" : "mundo-simi-07",
+			"url": "http://www.doctorsimi.com.mx/flip/MundoSimi7/index.html"
+		},
+		{
+			"titulo" : "Mundo Simi 8",
+			"subtitulo": "Celebremos juntos el mejor día del año, ¡el Día del Niño!",
+			"img" : "mundo-simi-08",
+			"url": "http://www.doctorsimi.com.mx/flip/MundoSimi8/index.html"
+		}
 	]
 }

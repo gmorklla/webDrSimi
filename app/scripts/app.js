@@ -103,27 +103,6 @@ angular
             $('#demo1').logosDistort(options);
             $('#particle-target').particleground(particles);
 
-            $('.btn').hover(function(e) {
-                var obj = $(this);
-                obj.addClass('animated tada');
-                TweenLite.to(obj, 0.5, { borderRadius: "15px" });
-                obj.tooltip('show');
-                $('.tooltip').removeClass('fade');
-                $('.tooltip').addClass('animated rubberBand');
-            }, function(e) {
-                var obj = $(this);
-                obj.removeClass('animated tada');
-                obj.tooltip('hide');
-                TweenLite.to(obj, 0.5, { borderRadius: "21px" });
-            });
-
-            var options = {
-                placement: 'bottom',
-                container: 'body'
-            }
-
-            $('.btn').tooltip(options);
-
             $rootScope.cargarJuego = function () {
                 $('#particle-target').particleground('destroy');
                 $('#demo1').remove();
@@ -149,7 +128,27 @@ angular
 
         // Una vez cargados todos los datos de la vista, desvanece el loading
         $rootScope.$on('$viewContentLoaded',
-            function() {
-              setTimeout(function(){ $("#loading").fadeOut("slow"); }, 1000);
+            function() {              
+                $('li').tooltip('hide');
+                $('.btn').hover(function(e) {
+                    var obj = $(this);
+                    obj.addClass('animated tada');
+                    TweenLite.to(obj, 0.5, { borderRadius: "15px" });
+                    obj.tooltip('show');
+                    $('.tooltip').removeClass('fade');
+                    $('.tooltip').addClass('animated rubberBand');
+                }, function(e) {
+                    var obj = $(this);
+                    obj.removeClass('animated tada');
+                    obj.tooltip('hide');
+                    TweenLite.to(obj, 0.5, { borderRadius: "21px" });
+                });
+                var options = {
+                    placement: 'bottom',
+                    container: 'body'
+                };
+
+                $('.btn').tooltip(options);
+                setTimeout(function(){ $("#loading").fadeOut("slow"); }, 1000);
             });
     });

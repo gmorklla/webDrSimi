@@ -173,7 +173,7 @@ angular.module('drsimiApp')
                 // An error happened.
                 console.log(error);
             });
-        }
+        }      
 
         // Procesa datos que angular todavía no ha digerido
         function digiere() {

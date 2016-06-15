@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Math Game</title>
+    <link rel='stylesheet' href='../../../bower_components/bootstrap/dist/css/bootstrap.css' />
+    <link rel='stylesheet' href='css/estilos.css' />
+</head>
+
+<body>
+    <!-- Content -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="text-center"><span id="titulo">Tiempo:</span> <span id="segundos">0.0</span></h1>
+            <div id="progressTimer"></div>
+            <h2 id="result" class="text-center">
+                <span id="operando1">1</span>
+                <span id="operacion">+</span>
+                <span id="operando2">1</span>
+                <span> = </span>
+                <span id="resultado">2</span>
+            </h2>
+            <div class="row placeholders">
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <div class="circle"></div>
+                    <h4 class="respuesta text-center btnGetMath"><span>10</span></h4>
+                </div>
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <div class="circle"></div>
+                    <h4 class="respuesta text-center btnGetMath">20</h4>
+                </div>
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <div class="circle"></div>
+                    <h4 class="respuesta text-center btnGetMath">2</h4>
+                </div>
+                <div class="col-xs-6 col-sm-3 placeholder">
+                    <div class="circle"></div>
+                    <h4 class="respuesta text-center btnGetMath">5</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts -->
+    <script src="../../../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="js/math.js"></script>
+    <script src="js/jquery.progressTimer.js"></script>
+</body>
+
+</html>

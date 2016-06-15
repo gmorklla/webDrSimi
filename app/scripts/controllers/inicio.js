@@ -13,26 +13,6 @@ angular.module('drsimiApp')
         $(document).ready(function() {
             $('#castle').addClass('animated zoomInUp');
             $('#logo').addClass('animated bounceInUp');
-            $('.btn').hover(function(e) {
-                var obj = $(this);
-                obj.addClass('animated tada');
-                TweenLite.to(obj, 0.5, { borderRadius: "15px" });
-                obj.tooltip('show');
-                $('.tooltip').removeClass('fade');
-                $('.tooltip').addClass('animated rubberBand');
-            }, function(e) {
-                var obj = $(this);
-                obj.removeClass('animated tada');
-                obj.tooltip('hide');
-                TweenLite.to(obj, 0.5, { borderRadius: "21px" });
-            });
-
-            var options = {
-                placement: 'bottom',
-                container: 'body'
-            };
-
-            $('.btn').tooltip(options);
 
             // Abre Ediciones modal de Mundo Simi con animación personalizada
             $('#btnEdicionesModal').click(function(event) {
