@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+    Array.prototype.shuffled = function() {
+        return this.map(function(n){
+            return [Math.random(), n] 
+        }).sort().map(function(n){
+            return n[1]
+        });
+    }    
+
     var number1; // Primer número que se usará en la operación
     var operator; // Con este dato se obtiene el tipo de operación
     var number2; // Primer número que se usará en la operación
@@ -145,10 +153,44 @@ $(document).ready(function() {
     function generaRespuestas() {
     	var sorteo = Math.floor((Math.random() * 4));
     	var respuestas = $('.btnGetMath');
-    	if(oculto == '+' || oculto == '-' || oculto == 'x' || oculto == '÷'){
-    		console.info('signos');
-    	}
-    	$(respuestas[sorteo]).html(oculto);
+        // Signos
+        var signos = ['+', '-', 'x', '÷'];
+    	if(oculto == '+' || oculto == '-' || oculto == 'x' || oculto == '÷') {
+            signos = generaSignos(signos);
+            for (var i = 0; i < respuestas.length; i++) {
+                if(i === sorteo) {
+                    $(respuestas[sorteo]).html(oculto);
+                } else {
+                    $(respuestas[i]).html(signos[0]);
+                    signos.splice(0, 1);
+                }
+            }
+    	} else {
+            for (var i = 0; i < respuestas.length; i++) {
+                if(i === sorteo) {
+                    $(respuestas[sorteo]).html(oculto);
+                } else {
+                    var nMin = (_.min([number1,number2])) - 10;
+                    var nMax = (_.max([number1,number2])) + 10;
+                    var numSorteado = randomIntFromInterval(nMin, nMax);
+                    $(respuestas[i]).html(numSorteado);
+                }
+            }
+        }   
+
+    }
+
+    function generaSignos(signos) {
+        for (var i = 0; i < signos.length; i++) {
+            if(signos[i] == oculto) {
+                signos.splice(i, 1);
+            }
+        }
+        return signos.shuffled();
+    }
+
+    function randomIntFromInterval(min,max) {
+        return Math.floor(Math.random()*(max-min+1)+min);
     }
 
 });
