@@ -199,7 +199,6 @@ $(document).ready(function() {
                     $(respuestas[sorteo]).html(oculto);
                 } else {
                     var numSorteado = generaNum();
-                    console.info('Final: ', numSorteado);
                     resultadosR.push(numSorteado);
                     $(respuestas[i]).html(numSorteado);
                 }
@@ -212,21 +211,15 @@ $(document).ready(function() {
         var nMin = (_.min([number1,number2]));
         var nMax = (_.max([number1,number2])) + 20;
         var numSorteado = randomIntFromInterval(nMin, nMax);
-        console.log('Num sorteado: ', numSorteado);
         if(numSorteado == oculto) {
-            console.info('Se repite porque el número sorteado es igual al oculto');
-            return;
-            generaNum();
+            numSorteado += randomIntFromInterval(nMin, nMax);
         } else {
             for (var i = 0; i < resultadosR.length; i++) {
                 if(resultadosR[i] == numSorteado) {
-                    console.info('Se repite porque ya había un número igual');
-                    return;
-                    generaNum();
+                    numSorteado += randomIntFromInterval(nMin, nMax);
                 }
             }
-        }                        
-        console.log('Pasa el num: ', numSorteado);
+        }
         return numSorteado;
     }
 
