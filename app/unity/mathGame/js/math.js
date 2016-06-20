@@ -13,13 +13,31 @@ $(document).ready(function() {
     var number2; // Primer número que se usará en la operación
     var oculto; // Variable que tendrá el resultado que se espera de el usuario
     var myVar2;
+    var score = 0;
+    var errores = 0;
+    var start = true;
 
     // on click manda llamar las funciones que cargan los datos
-    $('.btnGetMath').click(function() {    	
+    $('.btnGetMath').click(function(e) {
+
+        var valor = $(e.currentTarget).text();
+        //console.log(valor, oculto);
+        if(valor == oculto) {
+            score++;
+            $('.score').html(score);
+        } else {
+            if(start == true) {
+                $('.errores').html(errores);
+                start = false;
+            } else {
+                errores++;
+                $('.errores').html(errores);
+            }
+        }
 
     	// Código que se usa para llamar el plugin que hace funcionar la progress bar
 	    $("#progressTimer").progressTimer({
-	        timeLimit: 3,
+	        timeLimit: 4,
 	        warningThreshold: 5,
 	        baseStyle: 'progress-bar-info',
 	        warningStyle: 'progress-bar-warning',
@@ -62,7 +80,14 @@ $(document).ready(function() {
                 opType = '+';
                 break;
             case 1:
-                resultado = number1 - number2;
+                if(number2 > number1) {
+                    var num1 = number1;
+                    var num2 = number2;
+                    number1 = num2;
+                    number2 = num1;
+                    resultado = number2 - number1;
+                }
+                resultado = number1 - number2;              
                 opType = '-';
                 break;
             case 2:
@@ -150,11 +175,14 @@ $(document).ready(function() {
         $('#resultado').css('color', '#333').removeClass('badge');
     }
 
+    var resultadosR = [];
+
     function generaRespuestas() {
     	var sorteo = Math.floor((Math.random() * 4));
     	var respuestas = $('.btnGetMath');
         // Signos
         var signos = ['+', '-', 'x', '÷'];
+        resultadosR = [];
     	if(oculto == '+' || oculto == '-' || oculto == 'x' || oculto == '÷') {
             signos = generaSignos(signos);
             for (var i = 0; i < respuestas.length; i++) {
@@ -170,14 +198,36 @@ $(document).ready(function() {
                 if(i === sorteo) {
                     $(respuestas[sorteo]).html(oculto);
                 } else {
-                    var nMin = (_.min([number1,number2])) - 10;
-                    var nMax = (_.max([number1,number2])) + 10;
-                    var numSorteado = randomIntFromInterval(nMin, nMax);
+                    var numSorteado = generaNum();
+                    console.info('Final: ', numSorteado);
+                    resultadosR.push(numSorteado);
                     $(respuestas[i]).html(numSorteado);
                 }
             }
         }   
 
+    }
+
+    function generaNum() {
+        var nMin = (_.min([number1,number2]));
+        var nMax = (_.max([number1,number2])) + 20;
+        var numSorteado = randomIntFromInterval(nMin, nMax);
+        console.log('Num sorteado: ', numSorteado);
+        if(numSorteado == oculto) {
+            console.info('Se repite porque el número sorteado es igual al oculto');
+            return;
+            generaNum();
+        } else {
+            for (var i = 0; i < resultadosR.length; i++) {
+                if(resultadosR[i] == numSorteado) {
+                    console.info('Se repite porque ya había un número igual');
+                    return;
+                    generaNum();
+                }
+            }
+        }                        
+        console.log('Pasa el num: ', numSorteado);
+        return numSorteado;
     }
 
     function generaSignos(signos) {
