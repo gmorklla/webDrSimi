@@ -1,0 +1,18 @@
+<!-- Modal Juego Mundo Simi -->
+<div class="modal animated" id="juegoMathSimi" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content gameDialog">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Desafío matemático</h4>
+                <button type="button" class="close" ng-click="cierraJuegoMath()"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div id="gameMathContent"></div>              
+            </div>
+            <hr>
+            <div class="cssload-container loaderGame" ng-if="loadingGame == true">
+                <div class="cssload-speeding-wheel"></div>
+            </div>            
+        </div>
+    </div>
+</div>

@@ -4,15 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Math Game</title>
+    <meta name="viewport" content="width=device-width">
     <link rel='stylesheet' href='../../../bower_components/bootstrap/dist/css/bootstrap.css' />
     <link rel='stylesheet' href='css/estilos.css' />
+    <link rel="stylesheet" href="../../styles/animate.css">
+    <link href='https://fonts.googleapis.com/css?family=Candal' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-    <!-- Content -->
+    <!-- Content -->    
     <div class="jumbotron">
         <div class="container">
-            <h1 class="text-center"><span id="titulo">Tiempo:</span> <span id="segundos">0.0</span></h1>
+            <p class="instrucciones">Instrucciones: <span>Haz clic en el círculo que creas tiene la respuesta correcta.</span></p>
+            <div class="row">
+                <div class="col-md-12 col-xs-6 text-center"><h1>Tiempo:</h1></div>
+                <div class="col-md-12 col-xs-6 text-center"><h1 id="segundos">0.0</h1></div>
+            </div>
             <p class="text-center">
                 <button class="btn btn-primary btn-lg" type="button">
                   Aciertos <span class="badge score">0</span>
@@ -31,23 +38,25 @@
             </h2>
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <div class="circle"></div>
-                    <h4 class="respuesta text-center btnGetMath"><span>10</span></h4>
+                    <div class="circle btnGetMath">10</div>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <div class="circle"></div>
-                    <h4 class="respuesta text-center btnGetMath">20</h4>
+                    <div class="circle btnGetMath">20</div>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <div class="circle"></div>
-                    <h4 class="respuesta text-center btnGetMath">2</h4>
+                    <div class="circle btnGetMath">2</div>
                 </div>
                 <div class="col-xs-6 col-sm-3 placeholder">
-                    <div class="circle"></div>
-                    <h4 class="respuesta text-center btnGetMath">5</h4>
+                    <div class="circle btnGetMath">5</div>
                 </div>
             </div>
         </div>
+    </div>
+    <div class="gameOver">
+        <h1 class="animated tada">Game over!</h1>
+        <button id="reinicia" class="btn btn-danger btn-lg" type="button">
+            <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span> Reiniciar
+        </button>
     </div>
     <!-- Scripts -->
     <script src="../../../bower_components/jquery/dist/jquery.js"></script>

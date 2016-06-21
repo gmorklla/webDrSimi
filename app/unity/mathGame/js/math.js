@@ -15,47 +15,114 @@ $(document).ready(function() {
     var myVar2;
     var score = 0;
     var errores = 0;
-    var start = true;
+    var start = true;    
 
-    // on click manda llamar las funciones que cargan los datos
+    // On click manda llamar las funciones que cargan los datos
     $('.btnGetMath').click(function(e) {
 
-        var valor = $(e.currentTarget).text();
-        //console.log(valor, oculto);
-        if(valor == oculto) {
-            score++;
-            $('.score').html(score);
-        } else {
-            if(start == true) {
-                $('.errores').html(errores);
-                start = false;
+        clearInterval(myVar2);
+
+        $('.btnGetMath').removeClass('bounceIn');
+
+        setTimeout(function () {
+            var valor = $(e.currentTarget).text();
+            //console.log(valor, oculto);
+            if(valor == oculto) {
+                score++;
+                $('.score').parent().addClass('animated wobble');
+                $('.score').html(score);
+                setTimeout(function () {
+                    $('.score').parent().removeClass('animated wobble');
+                }, 1000);
             } else {
-                errores++;
-                $('.errores').html(errores);
+                if(start == true) {
+                    $('.errores').html(errores);
+                    start = false;
+                } else {
+                    errores++;
+                    $('.errores').parent().addClass('animated wobble');
+                    $('.errores').html(errores);
+                    if(errores >= 3) {
+                        $('.gameOver').css('display', 'block').addClass('animated flipInY');
+
+                        // Llama fn en angular para pasar el score
+                        var scope = parent.angular.element(parent.document.getElementById("bs-example-navbar-collapse-1")).scope();
+                        scope.$apply(function () {
+                            scope.getScoreFromMathFrame(score);
+                        });
+
+                    }
+                    setTimeout(function () {
+                        $('.errores').parent().removeClass('animated wobble');
+                    }, 1000);
+                }
             }
-        }
 
-    	// Código que se usa para llamar el plugin que hace funcionar la progress bar
-	    $("#progressTimer").progressTimer({
-	        timeLimit: 4,
-	        warningThreshold: 5,
-	        baseStyle: 'progress-bar-info',
-	        warningStyle: 'progress-bar-warning',
-	        completeStyle: 'progress-bar-danger',
-	        onFinish: function() {
-	        	clearInterval(myVar2);
-	        	$('#segundos').html( 10 );
-	        }
-	    });
+            // Código que se usa para llamar el plugin que hace funcionar la progress bar
+            $("#progressTimer").progressTimer({
+                timeLimit: 4,
+                warningThreshold: 5,
+                baseStyle: 'progress-bar-info',
+                warningStyle: 'progress-bar-warning',
+                completeStyle: 'progress-bar-danger',
+                onFinish: function() {                    
+                    $('#segundos').html( 10 );
+                }
+            });
 
-        // Llamada a resetCss() para resetear color de texto
-        resetCss();	    
+            // Llamada a resetCss() para resetear color de texto
+            resetCss();     
 
-	    // Llamada a timerSecs() para presentar valor de progress bars
-	    timerSecs();
+            // Llamada a timerSecs() para presentar valor de progress bars
+            timerSecs();
 
-        // Llamada a getData() para empezar el proceso
-        getData();
+            // Llamada a getData() para empezar el proceso
+            getData();            
+        }, 500);
+        
+    });
+
+    // On click reinicia juego
+    $('#reinicia').click(function() {
+
+        clearInterval(myVar2);
+
+        $('.btnGetMath').removeClass('bounceIn');
+
+        $('.gameOver').addClass('animated flipOutY');
+
+        setTimeout(function () {
+            $('.gameOver').removeClass('animated flipOutY');
+            $('.gameOver').css('display', 'none');
+
+            score = 0;
+            errores = 0;
+
+            $('.score').html(score);
+            $('.errores').html(errores);
+
+            // Código que se usa para llamar el plugin que hace funcionar la progress bar
+            $("#progressTimer").progressTimer({
+                timeLimit: 4,
+                warningThreshold: 5,
+                baseStyle: 'progress-bar-info',
+                warningStyle: 'progress-bar-warning',
+                completeStyle: 'progress-bar-danger',
+                onFinish: function() {                    
+                    $('#segundos').html( 10 );
+                }
+            });
+
+            // Llamada a resetCss() para resetear color de texto
+            resetCss();     
+
+            // Llamada a timerSecs() para presentar valor de progress bars
+            timerSecs();
+
+            // Llamada a getData() para empezar el proceso
+            getData();            
+        }, 1000);
+
     });
 
     // Fn que obtiene de forma aleatoria los números que se usan para formular la operación
@@ -164,7 +231,10 @@ $(document).ready(function() {
 	    	var actual = $('.progress-bar').width();
 	    	var porcentaje = (actual * 100) / total;
 	    	var pctFormat = (Math.round(porcentaje) / 10).toFixed(1);
-	    	$('#segundos').html( pctFormat );   	
+	    	$('#segundos').html( pctFormat );
+            if(porcentaje >= 99) {
+                $('.gameOver').css('display', 'block').addClass('animated flipInY');
+            }            
 	    }, 100);      	
     }
 
@@ -187,24 +257,23 @@ $(document).ready(function() {
             signos = generaSignos(signos);
             for (var i = 0; i < respuestas.length; i++) {
                 if(i === sorteo) {
-                    $(respuestas[sorteo]).html(oculto);
+                    $(respuestas[sorteo]).html(oculto).addClass('animated bounceIn');
                 } else {
-                    $(respuestas[i]).html(signos[0]);
+                    $(respuestas[i]).html(signos[0]).addClass('animated bounceIn');
                     signos.splice(0, 1);
                 }
             }
     	} else {
             for (var i = 0; i < respuestas.length; i++) {
                 if(i === sorteo) {
-                    $(respuestas[sorteo]).html(oculto);
+                    $(respuestas[sorteo]).html(oculto).addClass('animated bounceIn');
                 } else {
                     var numSorteado = generaNum();
                     resultadosR.push(numSorteado);
-                    $(respuestas[i]).html(numSorteado);
+                    $(respuestas[i]).html(numSorteado).addClass('animated bounceIn');
                 }
             }
-        }   
-
+        }
     }
 
     function generaNum() {
@@ -235,5 +304,11 @@ $(document).ready(function() {
     function randomIntFromInterval(min,max) {
         return Math.floor(Math.random()*(max-min+1)+min);
     }
+
+    $('.circle').hover(function() {
+        $(this).addClass('animated tada');
+    }, function() {
+        $(this).removeClass('animated tada');
+    });
 
 });

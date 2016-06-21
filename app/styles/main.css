@@ -800,6 +800,10 @@ button.logOut:hover {
   color: wheat;
 }
 
+#juegoMathSimi .modal-dialog {
+  width: 75%;
+}
+
 
 /* Responsive: Portrait tablets and up */
 
