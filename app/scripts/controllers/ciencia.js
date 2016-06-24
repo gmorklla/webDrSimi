@@ -25,7 +25,7 @@ angular.module('drsimiApp')
     };
 
     $rootScope.getScoreFromMathFrame = function(data) {
-        alert(data);
+        console.log(data);
     };
 
   	function cModalMathGame() {
